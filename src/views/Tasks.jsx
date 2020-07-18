@@ -73,7 +73,7 @@ const Tasks = () => {
     return (
         <div className="container mt-2 mt-md-5">
             <div className="row">
-                {/* Formulario de creación y edición de tareas */}
+                {/* Formulario de creación y edición de tareas a*/}
                 <div className="col-12 col-md-4">
                     <h1>{mode ? "Crear de tarea" : "Editar tarea"}</h1>
                     <form onSubmit={mode ? e => addTask(e) : e => updateTask(e)}>
