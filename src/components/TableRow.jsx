@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const TableRow = props => {
+const TableRow = ({id, user, description, edit, del, mode, modeEdit}) => {
     return (
         <tr>
-            <th scope="row">{props.id}</th>
-            <td>{props.user}</td>
-            <td>{props.description}</td>
+            <th scope="row">{id}</th>
+            <td>{user}</td>
+            <td>{description}</td>
             <td>
-                <i onClick={props.edit} className={`fas fa-edit ${!props.mode && props.in !== props.index? "text-success" : "text-secondary"}`} />
-                <i onClick={props.delete} className="fas fa-trash ml-3 mr-3" />
+                <i onClick={edit} className={`fas fa-edit ${!mode && modeEdit ? "text-success" : "text-secondary"}`} />
+                <i onClick={del} className="fas fa-trash ml-3 mr-3" />
             </td>
         </tr>
     )
@@ -23,8 +23,9 @@ TableRow.propTypes = {
     user: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     edit: PropTypes.func.isRequired,
-    delete: PropTypes.func.isRequired,
-    mode: PropTypes.bool.isRequired
+    del: PropTypes.func.isRequired,
+    mode: PropTypes.bool.isRequired,
+    modeEdit: PropTypes.bool.isRequired
 }
 
 export default TableRow

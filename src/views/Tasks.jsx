@@ -2,7 +2,6 @@ import React from 'react'
 import swal from 'sweetalert'
 import FormGroup from '../components/FormGroup'
 import TableRow from '../components/TableRow'
-import Title from '../components/Title'
 
 const Tasks = () => {
     //Array para visualizar en la tabla
@@ -51,7 +50,7 @@ const Tasks = () => {
         const copyTasks = tasks
         const newTasks = copyTasks.filter(tasks => tasks !== currentTask)
         setTasks(newTasks)
-        swal("Felicitaciones", "Tarea eliminada con éxito", "success") 
+        swal("Felicitaciones", "Tarea eliminada con éxito", "success")
     }
     //Función para asignar los valores por defecto a su respectiva variable
     const setForm = (user, description, index) => {
@@ -77,7 +76,7 @@ const Tasks = () => {
             <div className="row">
                 {/* Formulario de creación y edición de tareas a*/}
                 <div className="col-12 col-md-4">
-                    <Title text={mode ? "Crear de tarea" : "Editar tarea"}/>
+                    <h1>{mode ? "Crear de tarea" : "Editar tarea"}</h1>
                     <form onSubmit={mode ? e => addTask(e) : e => updateTask(e)}>
                         <FormGroup
                             id="inputUser"
@@ -121,16 +120,17 @@ const Tasks = () => {
                         <tbody>
                             {
                                 tasks.length > 0 &&
-                                tasks.map((task, ind) => (
+                                tasks.map((task, i) => (
                                     < TableRow
-                                    key={ind}
-                                    id={task.id}
-                                    user={task.user}
-                                    description={task.description}
-                                    edit={() => setForm(task.user, task.description, ind)}
-                                    delete={() => deleteTask(task)}
-                                    mode={mode}
-                                />
+                                        key={i}
+                                        id={task.id}
+                                        user={task.user}
+                                        description={task.description}
+                                        edit={() => setForm(task.user, task.description, i)}
+                                        del={() => deleteTask(task)}
+                                        mode={mode}
+                                        modeEdit={index === i ? true : false}
+                                    />
                                 ))
 
                             }
