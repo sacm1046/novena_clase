@@ -113,7 +113,7 @@ const Tasks = () => {
                         <thead>
                             <tr>
                                 <th scope="col">Id</th>
-                                <th scope="col">Usuario</th>
+                                <th scope="col">Usuarios</th>
                                 <th scope="col">Descripción</th>
                                 <th scope="col">Opciones</th>
                             </tr>
