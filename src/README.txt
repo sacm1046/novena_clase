@@ -41,3 +41,14 @@ npm install --save materialize-css@next
         <i onClick={() => deleteTask(task)} className="fas fa-trash ml-3 mr-3" />
     </td>
 </tr>
+
+
+    < TableRow
+        key={index}
+        id={task.id}
+        user={task.user}
+        description={task.description}
+        edit={() => setForm(task.user, task.description, index)}
+        delete={() => deleteTask(task)}
+        mode={mode}
+    />

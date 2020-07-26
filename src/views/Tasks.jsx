@@ -2,14 +2,16 @@ import React from 'react'
 import swal from 'sweetalert'
 import FormGroup from '../components/FormGroup'
 import TableRow from '../components/TableRow'
-
+import Title from '../components/Title'
 
 const Tasks = () => {
+    //Array para visualizar en la tabla
     const [tasks, setTasks] = React.useState([])
-    //Modo crear=true, modo editar=false
-    const [mode, setMode] = React.useState(true)
+    //Variables del formulario
     const [user, setUser] = React.useState("")
     const [description, setDescription] = React.useState("")
+    //Modo crear=true, modo editar=false
+    const [mode, setMode] = React.useState(true)
     const [index, setIndex] = React.useState(null)
 
     //Función para crear tarea
@@ -49,7 +51,7 @@ const Tasks = () => {
         const copyTasks = tasks
         const newTasks = copyTasks.filter(tasks => tasks !== currentTask)
         setTasks(newTasks)
-        swal("Felicitaciones", "Tarea eliminada con éxito", "success")
+        swal("Felicitaciones", "Tarea eliminada con éxito", "success") 
     }
     //Función para asignar los valores por defecto a su respectiva variable
     const setForm = (user, description, index) => {
@@ -75,7 +77,7 @@ const Tasks = () => {
             <div className="row">
                 {/* Formulario de creación y edición de tareas a*/}
                 <div className="col-12 col-md-4">
-                    <h1>{mode ? "Crear de tarea" : "Editar tarea"}</h1>
+                    <Title text={mode ? "Crear de tarea" : "Editar tarea"}/>
                     <form onSubmit={mode ? e => addTask(e) : e => updateTask(e)}>
                         <FormGroup
                             id="inputUser"
@@ -102,6 +104,8 @@ const Tasks = () => {
                             </button>
                         }
                     </form>
+
+
                 </div>
                 {/* Tabla de tareas */}
                 <div className="col-12 col-md-8 mt-5 mt-md-0">
@@ -119,14 +123,14 @@ const Tasks = () => {
                                 tasks.length > 0 &&
                                 tasks.map((task, index) => (
                                     < TableRow
-                                        key={index}
-                                        id={task.id}
-                                        user={task.user}
-                                        description={task.description}
-                                        edit={() => setForm(task.user, task.description, index)}
-                                        delete={() => deleteTask(task)}
-                                        mode={mode}
-                                    />
+                                    key={index}
+                                    id={task.id}
+                                    user={task.user}
+                                    description={task.description}
+                                    edit={() => setForm(task.user, task.description, index)}
+                                    delete={() => deleteTask(task)}
+                                    mode={mode}
+                                />
                                 ))
 
                             }
