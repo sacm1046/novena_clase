@@ -121,13 +121,13 @@ const Tasks = () => {
                         <tbody>
                             {
                                 tasks.length > 0 &&
-                                tasks.map((task, index) => (
+                                tasks.map((task, ind) => (
                                     < TableRow
-                                    key={index}
+                                    key={ind}
                                     id={task.id}
                                     user={task.user}
                                     description={task.description}
-                                    edit={() => setForm(task.user, task.description, index)}
+                                    edit={() => setForm(task.user, task.description, ind)}
                                     delete={() => deleteTask(task)}
                                     mode={mode}
                                 />
